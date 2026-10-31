@@ -57,8 +57,8 @@ section{padding:80px 0}
 h2.sec{font-family:var(--head);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.12;color:var(--navy)}
 .secsub{color:var(--ink2);max-width:40em;margin:12px auto 0;font-size:19px}
 .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
-.chips span{border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-weight:600;font-size:15px;background:var(--card)}
-.chips span.on{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.chips button{font:inherit;cursor:pointer;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-weight:600;font-size:15px;background:var(--card)}
+.chips button.on{background:var(--navy);color:var(--bg);border-color:var(--navy)}
 .roles{display:grid;gap:22px;margin-top:30px;text-align:left}
 @media(min-width:800px){.roles{grid-template-columns:repeat(4,1fr)}}
 .role{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:8px;box-shadow:0 2px 8px rgba(3,45,96,.06)}
@@ -105,12 +105,14 @@ footer{background:var(--navy);color:#fff;padding:48px 0 28px;font-size:14.5px}
 .fcols p{color:rgba(255,255,255,.82);max-width:22em}
 .legal{border-top:1px solid rgba(255,255,255,.2);margin-top:30px;padding-top:18px;color:rgba(255,255,255,.7);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
 .legal a{color:inherit}
+.roles[hidden]{display:none}
+.chips button:hover{border-color:var(--navy)}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <a class="logo" href="/" aria-label="Jin AI home"><svg viewBox="0 0 390 326" aria-hidden="true" style="width:26px;height:22px;flex:none;fill:currentColor;margin-right:8px;vertical-align:-3px"><path d="M234 0h71L71 326H0Z"/><path d="M248 129 211 180 317 326 389 326Z"/></svg>Try Jin AI</a>
-  <nav class="menu" aria-label="Main"><a href="#roles">Solutions</a><a href="/pilot/">Pilot program</a><a href="#trust">Security</a><a href="#resources">Resources</a></nav>
+  <nav class="menu" aria-label="Main"><a href="#roles">Solutions</a><a href="/pilot/">Pilot program</a><a href="#trust">Security</a><a href="https://usejinai.com/guides/">Resources</a></nav>
   <div class="hact"><a class="btn btn-o" href="https://jinai.md/?utm_source=tryjinai.com&amp;utm_medium=partner&amp;utm_content=header-demo">Watch demo</a><a class="btn btn-p" href="/pilot/">Start a pilot</a></div>
 </div></header>
 
@@ -126,13 +128,15 @@ footer{background:var(--navy);color:#fff;padding:48px 0 28px;font-size:14.5px}
 <section class="center" id="roles"><div class="wrap">
   <h2 class="sec">What can Jin do for your team?</h2>
   <p class="secsub">Every team has work that comes back every week. Here is where Jin starts.</p>
-  <div class="chips" aria-hidden="true"><span class="on">By role</span><span>By task</span><span>By tool</span></div>
-  <div class="roles">
-    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><path d="M5 23l6-6 5 5 9-10"/><path d="M19 12h6v6"/></svg></span><h3>Sales</h3><p>A brief before every customer call, with open questions and a next step.</p><a href="https://usejinai.com/">See how &rsaquo;</a></div>
-    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="6" y="5" width="18" height="21" rx="2"/><path d="M10 11h10M10 15h10M10 19h6"/></svg></span><h3>Operations</h3><p>The weekly status update, drafted from threads and meetings.</p><a href="https://usejinai.com/">See how &rsaquo;</a></div>
-    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><circle cx="11" cy="11" r="4"/><circle cx="21" cy="13" r="3"/><path d="M4 25c1-5 4-7 7-7s6 2 7 7M17 25c1-3 2-5 4-5s4 2 5 5"/></svg></span><h3>People teams</h3><p>Follow-ups on pending candidate replies, ready to approve.</p><a href="https://usejinai.com/">See how &rsaquo;</a></div>
-    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="5" y="7" width="20" height="18" rx="2"/><path d="M5 12h20M10 4v5M20 4v5"/></svg></span><h3>Assistants</h3><p>Agendas based on the conversations that led up to the meeting.</p><a href="https://usejinai.com/">See how &rsaquo;</a></div>
+  <div class="chips" role="tablist" aria-label="Browse by"><button type="button" role="tab" class="on" aria-selected="true" aria-controls="p-role" id="t-role">By role</button><button type="button" role="tab" aria-selected="false" aria-controls="p-task" id="t-task">By task</button><button type="button" role="tab" aria-selected="false" aria-controls="p-tool" id="t-tool">By tool</button></div>
+  <div class="roles" role="tabpanel" id="p-role" aria-labelledby="t-role">
+    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><path d="M5 23l6-6 5 5 9-10"/><path d="M19 12h6v6"/></svg></span><h3>Sales</h3><p>A brief before every customer call, with open questions and a next step.</p><a href="https://usejinai.com/guides/follow-ups/">See how &rsaquo;</a></div>
+    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="6" y="5" width="18" height="21" rx="2"/><path d="M10 11h10M10 15h10M10 19h6"/></svg></span><h3>Operations</h3><p>The weekly status update, drafted from threads and meetings.</p><a href="https://usejinai.com/guides/weekly-status-update/">See how &rsaquo;</a></div>
+    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><circle cx="11" cy="11" r="4"/><circle cx="21" cy="13" r="3"/><path d="M4 25c1-5 4-7 7-7s6 2 7 7M17 25c1-3 2-5 4-5s4 2 5 5"/></svg></span><h3>People teams</h3><p>Follow-ups on pending candidate replies, ready to approve.</p><a href="https://usejinai.com/guides/follow-ups/">See how &rsaquo;</a></div>
+    <div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="5" y="7" width="20" height="18" rx="2"/><path d="M5 12h20M10 4v5M20 4v5"/></svg></span><h3>Assistants</h3><p>Agendas based on the conversations that led up to the meeting.</p><a href="https://usejinai.com/guides/meeting-prep/">See how &rsaquo;</a></div>
   </div>
+  <div class="roles" role="tabpanel" id="p-task" aria-labelledby="t-task" hidden><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="5" y="7" width="20" height="18" rx="2"/><path d="M5 12h20M10 4v5M20 4v5"/></svg></span><h3>Meeting prep</h3><p>Briefs and agendas built from the conversations before each meeting.</p><a href="https://usejinai.com/guides/meeting-prep/">See how &rsaquo;</a></div><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="6" y="5" width="18" height="21" rx="2"/><path d="M10 11h10M10 15h10M10 19h6"/></svg></span><h3>Weekly status updates</h3><p>A draft of what moved this week, from threads and meetings.</p><a href="https://usejinai.com/guides/weekly-status-update/">See how &rsaquo;</a></div><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="4" y="7" width="22" height="16" rx="2"/><path d="M4 9l11 8 11-8"/></svg></span><h3>Follow-ups</h3><p>Replies drafted after calls and when a thread has gone quiet.</p><a href="https://usejinai.com/guides/follow-ups/">See how &rsaquo;</a></div><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><path d="M15 4l9 4v7c0 6-4 10-9 12-5-2-9-6-9-12V8z"/></svg></span><h3>Admin setup</h3><p>Teams, tools, and exclusions decided before anyone connects.</p><a href="https://usejinai.com/guides/what-an-ai-assistant-should-read/">Read the guide &rsaquo;</a></div></div>
+  <div class="roles" role="tabpanel" id="p-tool" aria-labelledby="t-tool" hidden><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="4" y="7" width="22" height="16" rx="2"/><path d="M4 9l11 8 11-8"/></svg></span><h3>Gmail and Outlook</h3><p>Follow-ups and replies drafted from email threads.</p><a href="https://usejinai.com/guides/follow-ups/">See how &rsaquo;</a></div><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><rect x="5" y="7" width="20" height="18" rx="2"/><path d="M5 12h20M10 4v5M20 4v5"/></svg></span><h3>Google Calendar</h3><p>Briefs and agendas ready before each meeting.</p><a href="https://usejinai.com/guides/meeting-prep/">See how &rsaquo;</a></div><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><path d="M5 6h20v13H12l-6 5v-5H5z"/></svg></span><h3>Slack</h3><p>Status updates drafted from the channels where work moved.</p><a href="https://usejinai.com/guides/weekly-status-update/">See how &rsaquo;</a></div><div class="role"><span class="ico"><svg viewBox="0 0 30 30"><path d="M5 6h20v13H12l-6 5v-5H5z"/></svg></span><h3>Microsoft Teams</h3><p>Chat and meetings used to prepare the same drafts.</p><a href="https://usejinai.com/guides/what-an-ai-assistant-should-read/">What Jin reads &rsaquo;</a></div></div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
@@ -154,8 +158,8 @@ footer{background:var(--navy);color:#fff;padding:48px 0 28px;font-size:14.5px}
 <section class="band center" id="resources"><div class="wrap">
   <h2 class="sec">Learn more about Jin</h2>
   <div class="res">
-    <a href="https://usejinai.com/"><div class="top"><svg viewBox="0 0 56 56"><path d="M12 10h24l8 8v28H12z"/><path d="M18 26h20M18 32h20M18 38h12"/></svg></div><div class="body"><small>Guide</small><h3>How to use an AI assistant that prepares work before you ask</h3></div></a>
-    <a href="https://getjinai.com/"><div class="top"><svg viewBox="0 0 56 56"><path d="M28 8l16 6v12c0 10-7 17-16 20-9-3-16-10-16-20V14z"/></svg></div><div class="body"><small>For IT</small><h3>What Jin reads, and what it never does</h3></div></a>
+    <a href="https://usejinai.com/guides/proactive-ai-assistant/"><div class="top"><svg viewBox="0 0 56 56"><path d="M12 10h24l8 8v28H12z"/><path d="M18 26h20M18 32h20M18 38h12"/></svg></div><div class="body"><small>Guide</small><h3>How to use an AI assistant that prepares work before you ask</h3></div></a>
+    <a href="https://usejinai.com/guides/what-an-ai-assistant-should-read/"><div class="top"><svg viewBox="0 0 56 56"><path d="M28 8l16 6v12c0 10-7 17-16 20-9-3-16-10-16-20V14z"/></svg></div><div class="body"><small>For IT</small><h3>What Jin reads, and what it never does</h3></div></a>
     <a href="https://jinai.md/?utm_source=tryjinai.com&amp;utm_medium=partner&amp;utm_content=res-demo"><div class="top"><svg viewBox="0 0 56 56"><rect x="8" y="12" width="40" height="28" rx="3"/><path d="M24 20l10 6-10 6z"/></svg></div><div class="body"><small>Demo</small><h3>Watch Jin prepare a meeting brief</h3></div></a>
   </div>
 </div></section>
@@ -168,11 +172,14 @@ footer{background:var(--navy);color:#fff;padding:48px 0 28px;font-size:14.5px}
 <footer><div class="wrap">
   <div class="fcols">
     <div><h4>Try Jin AI</h4><p>The AI that spots repetitive work and prepares it for your team.</p></div>
-    <div><h4>Solutions</h4><a href="#roles">Sales</a><a href="#roles">Operations</a><a href="#roles">People teams</a><a href="#roles">Assistants</a></div>
+    <div><h4>Solutions</h4><a href="https://usejinai.com/guides/follow-ups/">Sales</a><a href="https://usejinai.com/guides/weekly-status-update/">Operations</a><a href="https://usejinai.com/guides/follow-ups/">People teams</a><a href="https://usejinai.com/guides/meeting-prep/">Assistants</a></div>
     <div><h4>Get started</h4><a href="/pilot/">Pilot program</a><a href="https://jinai.md/?utm_source=tryjinai.com&amp;utm_medium=partner&amp;utm_content=footer-demo">Watch demo</a><a href="#trust">Security</a></div>
-    <div><h4>Jin AI</h4><a href="https://jinai.md/">jinai.md</a><a href="https://usejinai.com/">Guides</a><a href="#">Privacy</a></div>
+    <div><h4>Jin AI</h4><a href="https://jinai.md/">jinai.md</a><a href="https://usejinai.com/guides/">Guides</a><a href="https://jinai.md/privacy/">Privacy</a></div>
   </div>
   <div class="legal"><span>tryjinai.com handles sales for Jin AI and is operated by Jin AI. Jin AI&trade; is a trademark of Jin AI.</span><span><a href="https://jinai.md/">jinai.md</a></span></div>
 </div></footer>
+<script>
+(function(){var t=document.querySelectorAll('.chips [role="tab"]');t.forEach(function(b,i){b.addEventListener("click",function(){t.forEach(function(x){var on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-selected",on);document.getElementById(x.getAttribute("aria-controls")).hidden=!on;});});b.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){var n=t[(i+(e.key==="ArrowRight"?1:t.length-1))%t.length];n.focus();n.click();}});});})();
+</script>
 </body>
 </html>
