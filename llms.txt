@@ -1,6 +1,6 @@
 # tryjinai.com
 
-> tryjinai.com handles sales for Jin AI and is operated by Jin AI. Jin AI is the GTM engineer agent for B2B SaaS marketing teams. It learns how a team's best marketers run campaigns, such as events, webinars and product launches, and turns that work into agentic workflows the whole team can run. Capture is opt-in for each marketer, marketers review and edit what Jin learns, and managers see workflows and results, not screens. Customer data is not used to train AI models. The official site is https://jinai.md/.
+> tryjinai.com handles sales for Jin AI and is operated by Jin AI. Jin AI is the GTM engineer agent for B2B SaaS marketing teams. It learns how a team's best marketers run campaigns, such as events, webinars and product launches, and turns that work into agentic workflows the whole team can run. Jin uses only company-approved data, and marketers see and edit what Jin learns. Customer data is not used to train AI models. The official site is https://jinai.md/.
 
 ## Pages
 
